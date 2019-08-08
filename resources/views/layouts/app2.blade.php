@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>SEMANGAT AGNES</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="http://localhost/laravel/project/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost/laravel/project/public/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{url('bower_components/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="http://localhost/laravel/project/public/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{url('bower_components/Ionicons/css/ionicons.min.css')}}">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="http://localhost/laravel/project/public/bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="{{url('bower_components/jvectormap/jquery-jvectormap.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="http://localhost/laravel/project/public/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{url('dist/css/AdminLTE.min.css')}}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="http://localhost/laravel/project/public/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="{{url('dist/css/skins/_all-skins.min.css')}}">
   
   <!-- <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> -->
@@ -71,7 +71,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="http://localhost/laravel/project/public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -84,7 +84,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="http://localhost/laravel/project/public/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="{{url('dist/img/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -96,7 +96,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="http://localhost/laravel/project/public/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="{{url('dist/img/user4-128x128.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -108,7 +108,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="http://localhost/laravel/project/public/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="{{url('dist/img/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -120,7 +120,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="http://localhost/laravel/project/public/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="{{url('dist/img/user4-128x128.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -257,13 +257,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="http://localhost/laravel/project/public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{url('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="http://localhost/laravel/project/public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                 <p>
                   {{ Auth::user()->name }}
                 </p>
@@ -295,7 +295,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="http://localhost/laravel/project/public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
@@ -317,7 +317,9 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview menu-open">
+        
+        @yield('sidebars')
+        <!-- <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -328,8 +330,8 @@
             <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
             <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
-        </li>
-        <li class="treeview">
+        </li> -->
+        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Layout Options</span>
@@ -479,12 +481,12 @@
             </li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
-        </li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        </li> -->
+        <!-- <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -696,26 +698,26 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="http://localhost/laravel/project/public/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="http://localhost/laravel/project/public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="{{url('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- FastClick -->
-<script src="http://localhost/laravel/project/public/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="{{url('bower_components/fastclick/lib/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="http://localhost/laravel/project/public/dist/js/adminlte.min.js"></script>
+<script src="{{url('dist/js/adminlte.min.js')}}"></script>
 <!-- Sparkline -->
-<script src="http://localhost/laravel/project/public/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<script src="{{url('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
 <!-- jvectormap  -->
-<script src="http://localhost/laravel/project/public/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="http://localhost/laravel/project/public/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="{{url('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{url('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
 <!-- SlimScroll -->
-<script src="http://localhost/laravel/project/public/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="{{url('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 <!-- ChartJS -->
-<script src="http://localhost/laravel/project/public/bower_components/chart.js/Chart.js"></script>
+<script src="{{url('bower_components/chart.js/Chart.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="http://localhost/laravel/project/public/dist/js/pages/dashboard2.js"></script>
+<script src="dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="http://localhost/laravel/project/public/dist/js/demo.js"></script>
+<script src="dist/js/demo.js"></script>
 @yield('javascripts')
 </body>
 </html>

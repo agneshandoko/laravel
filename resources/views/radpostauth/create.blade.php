@@ -1,5 +1,4 @@
 @extends('layouts.app2')
-
 @section('sidebars')
     <li class="treeview">
         <a href="#">
@@ -13,7 +12,7 @@
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul>
     </li>
-    <li class="active treeview menu-open">
+    <li class="treeview">
         <a href="#">
             <i class="fa fa-table"></i> <span>NAS</span>
             <span class="pull-right-container">
@@ -22,7 +21,7 @@
         </a>
         <ul class="treeview-menu">
             <li><a href="{{url('nas')}}"><i class="fa fa-circle-o"></i> NAS tables</a></li>
-            <li class="active"><a href="{{url('nastable')}}"><i class="fa fa-circle-o"></i> NAS Data tables</a></li>
+            <li><a href="{{url('nastable')}}"><i class="fa fa-circle-o"></i> NAS Data tables</a></li>
         </ul>
     </li>
     <li><a href="{{url('radacct')}}"><i class="fa fa-table"></i> <span>Rad Acct</span></a></li>
@@ -31,7 +30,7 @@
     <li><a href="{{url('radgroupreply')}}"><i class="fa fa-table"></i> <span>Rad Group Reply</span></a></li>
     <li><a href="{{url('radhuntgroup')}}"><i class="fa fa-table"></i> <span>Rad Hunt Group</span></a></li>
     <li><a href="{{url('radippool')}}"><i class="fa fa-table"></i> <span>Rad Ip Pool</span></a></li>
-    <li><a href="{{url('radpostauth')}}"><i class="fa fa-table"></i> <span>Rad Post Auth</span></a></li>
+    <li class="active"><a href="{{url('radpostauth')}}"><i class="fa fa-table"></i> <span>Rad Post Auth</span></a></li>
     <li><a href="{{url('radreply')}}"><i class="fa fa-table"></i> <span>Rad Reply</span></a></li>
     <li><a href="{{url('radusergroup')}}"><i class="fa fa-table"></i> <span>Rad User Group</span></a></li>
 @endsection
@@ -43,12 +42,12 @@
     <section class="content-header">
         <h1>
             Form
-            <small>NAS Edit Form</small>
+            <small>Rad Post Auth Form</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Form</a></li>
-            <li class="active">NAS Form</li>
+            <li class="active">Rad Post Auth Form</li>
         </ol>
     </section>
     
@@ -59,36 +58,31 @@
             <!-- /.box -->
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">NAS Edit Form</h3>
+                        <h3 class="box-title">Rad Post Auth Form</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                    {!! Form::open(['action' => ['NasController@update', $nasData->id], 'method' => 'POST']) !!}
+                    {!! Form::open(['action' => 'RadPostAuthController@store', 'method' => 'POST']) !!}
                         <div class="form-group">
-                            {{Form::label('id', 'NAS Id')}}
-                            {{Form::number('id', $nasData->id, ['class' => 'form-control', 'placeholder' => 'NAS Id (Fill with number)'])}}
+                            {{Form::label('id', 'Rad Post Auth Id')}}
+                            {{Form::number('id', '', ['class' => 'form-control', 'placeholder' => 'Rad Post Auth Id (Fill with number)'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('name', 'NAS Name')}}
-                            {{Form::text('name', $nasData->nasname, ['class' => 'form-control', 'placeholder' => 'NAS Name'])}}
+                            {{Form::label('username', 'Rad Post Auth Username')}}
+                            {{Form::text('username', '', ['class' => 'form-control', 'placeholder' => 'Rad Post Auth Username'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('shortname', 'Shortname')}}
-                            {{Form::text('shortname', $nasData->shortname, ['class' => 'form-control', 'placeholder' => 'Shortname'])}}
+                            {{Form::label('pass', 'Password')}}
+                            {{Form::text('pass', '', ['class' => 'form-control', 'placeholder' => 'Password'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('type', 'Type')}}
-                            {{Form::text('type', $nasData->type, ['class' => 'form-control', 'placeholder' => 'Type'])}}
+                            {{Form::label('reply', 'Authdate')}}
+                            {{Form::text('reply', '', ['class' => 'form-control', 'placeholder' => 'Reply'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('secret', 'Secret')}}
-                            {{Form::text('secret', $nasData->secret, ['class' => 'form-control', 'placeholder' => 'Secret'])}}
+                            {{Form::label('authdate', 'Authdate')}}
+                            {{Form::date('authdate', '', ['class' => 'form-control', 'placeholder' => 'Authdate'])}}
                         </div>
-                        <div class="form-group">
-                            {{Form::label('description', 'Description')}}
-                            {{Form::text('description', $nasData->description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
-                        </div>
-                        {{Form::hidden('_method', 'PUT')}}
                         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
                     {!! Form::close() !!}
                     </div>

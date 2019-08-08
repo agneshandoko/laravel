@@ -70,7 +70,7 @@ table, th, td {
                 <br>
                 <!-- <a><button type="button" class="btn btn-block btn-danger">Delete</button></a> -->
                 <a href="../nas/{{$nasData->id}}/edit"><button type="button" class="btn btn-block btn-info">Update</button></a>
-                <a href="../nas"><button type="button" class="btn btn-block btn-default">Back</button></a>
+                <a href="../nastable"><button type="button" class="btn btn-block btn-default">Back</button></a>
                 {!! Form::open(['action' => ['NasController@destroy', $nasData->id], 'method' => 'POST']) !!}
                   {{Form::hidden('_method', 'DELETE')}}
                   {{Form::submit('Delete', ['class' => 'btn btn-block btn-danger'])}}

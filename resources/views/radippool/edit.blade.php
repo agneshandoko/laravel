@@ -1,5 +1,4 @@
 @extends('layouts.app2')
-
 @section('sidebars')
     <li class="treeview">
         <a href="#">
@@ -13,7 +12,7 @@
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul>
     </li>
-    <li class="active treeview menu-open">
+    <li class="treeview">
         <a href="#">
             <i class="fa fa-table"></i> <span>NAS</span>
             <span class="pull-right-container">
@@ -22,7 +21,7 @@
         </a>
         <ul class="treeview-menu">
             <li><a href="{{url('nas')}}"><i class="fa fa-circle-o"></i> NAS tables</a></li>
-            <li class="active"><a href="{{url('nastable')}}"><i class="fa fa-circle-o"></i> NAS Data tables</a></li>
+            <li><a href="{{url('nastable')}}"><i class="fa fa-circle-o"></i> NAS Data tables</a></li>
         </ul>
     </li>
     <li><a href="{{url('radacct')}}"><i class="fa fa-table"></i> <span>Rad Acct</span></a></li>
@@ -30,7 +29,7 @@
     <li><a href="{{url('radgroupcheck')}}"><i class="fa fa-table"></i> <span>Rad Group Check</span></a></li>
     <li><a href="{{url('radgroupreply')}}"><i class="fa fa-table"></i> <span>Rad Group Reply</span></a></li>
     <li><a href="{{url('radhuntgroup')}}"><i class="fa fa-table"></i> <span>Rad Hunt Group</span></a></li>
-    <li><a href="{{url('radippool')}}"><i class="fa fa-table"></i> <span>Rad Ip Pool</span></a></li>
+    <li class="active"><a href="{{url('radippool')}}"><i class="fa fa-table"></i> <span>Rad Ip Pool</span></a></li>
     <li><a href="{{url('radpostauth')}}"><i class="fa fa-table"></i> <span>Rad Post Auth</span></a></li>
     <li><a href="{{url('radreply')}}"><i class="fa fa-table"></i> <span>Rad Reply</span></a></li>
     <li><a href="{{url('radusergroup')}}"><i class="fa fa-table"></i> <span>Rad User Group</span></a></li>
@@ -43,12 +42,12 @@
     <section class="content-header">
         <h1>
             Form
-            <small>NAS Edit Form</small>
+            <small>Rad Ip Pool Edit Form</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Form</a></li>
-            <li class="active">NAS Form</li>
+            <li class="active">Rad Ip Pool Form</li>
         </ol>
     </section>
     
@@ -59,34 +58,46 @@
             <!-- /.box -->
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">NAS Edit Form</h3>
+                        <h3 class="box-title">Rad Ip Pool Edit Form</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                    {!! Form::open(['action' => ['NasController@update', $nasData->id], 'method' => 'POST']) !!}
+                    {!! Form::open(['action' => ['RadIpPoolController@update', $radData->id], 'method' => 'POST']) !!}
                         <div class="form-group">
-                            {{Form::label('id', 'NAS Id')}}
-                            {{Form::number('id', $nasData->id, ['class' => 'form-control', 'placeholder' => 'NAS Id (Fill with number)'])}}
+                            {{Form::label('id', 'Rad Ip Pool Id')}}
+                            {{Form::number('id', $radData->id, ['class' => 'form-control', 'placeholder' => 'Rad Ip Pool Id (Fill with number)'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('name', 'NAS Name')}}
-                            {{Form::text('name', $nasData->nasname, ['class' => 'form-control', 'placeholder' => 'NAS Name'])}}
+                            {{Form::label('pool_name', 'Rad Ip Pool Username')}}
+                            {{Form::text('pool_name', $radData->pool_name, ['class' => 'form-control', 'placeholder' => 'Rad Ip Pool Username'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('shortname', 'Shortname')}}
-                            {{Form::text('shortname', $nasData->shortname, ['class' => 'form-control', 'placeholder' => 'Shortname'])}}
+                            {{Form::label('framedipaddress', 'Framed Ip Address')}}
+                            {{Form::text('framedipaddress', $radData->framedipaddress, ['class' => 'form-control', 'placeholder' => 'Framed Ip Address'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('type', 'Type')}}
-                            {{Form::text('type', $nasData->type, ['class' => 'form-control', 'placeholder' => 'Type'])}}
+                            {{Form::label('nasipaddress', 'NAS Ip Address')}}
+                            {{Form::text('nasipaddress', $radData->nasipaddress, ['class' => 'form-control', 'placeholder' => 'NAS Ip Address'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('secret', 'Secret')}}
-                            {{Form::text('secret', $nasData->secret, ['class' => 'form-control', 'placeholder' => 'Secret'])}}
+                            {{Form::label('calledstationid', 'Called Station Id')}}
+                            {{Form::text('calledstationid', $radData->calledstationid, ['class' => 'form-control', 'placeholder' => 'Called Station Id'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('description', 'Description')}}
-                            {{Form::text('description', $nasData->description, ['class' => 'form-control', 'placeholder' => 'Description'])}}
+                            {{Form::label('callingstationid', 'Calling Station Id')}}
+                            {{Form::text('callingstationid', $radData->callingstationid, ['class' => 'form-control', 'placeholder' => 'Calling Station Id'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('expiry_time', 'Expiry Time')}}
+                            {{Form::date('expiry_time', $radData->expiry_time, ['class' => 'form-control', 'placeholder' => 'Expiry Time'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('username', 'Username')}}
+                            {{Form::text('username', $radData->username, ['class' => 'form-control', 'placeholder' => 'Username'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('pool_key', 'Pool Key')}}
+                            {{Form::text('pool_key', $radData->pool_key, ['class' => 'form-control', 'placeholder' => 'Pool Key'])}}
                         </div>
                         {{Form::hidden('_method', 'PUT')}}
                         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
